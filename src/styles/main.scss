@@ -1,0 +1,92 @@
+@import "variables";
+
+* {
+  border-radius: 0 !important;
+  font-family: Russo One, sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Russo One, sans-serif;
+}
+
+.ant-select {
+  min-width: 200px;
+}
+
+header {
+  text-align: center;
+  padding-top: 12px;
+  margin-bottom: 16px;
+
+  h1 {
+    color: $primary-color;
+    font-size: 48px;
+    letter-spacing: 2px;
+    margin: 0;
+    text-align: center;
+  }
+
+  p {
+    font-size: 20px;
+    margin: 4px 0;
+  }
+}
+
+/*footer {
+  text-align: center;
+  color: #aaa;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  a {
+    color: #aaa;
+    text-decoration: underline;
+  }
+}*/
+
+a {
+  text-decoration: none;
+}
+
+textarea {
+  font-family: Russo One, sans-serif !important;
+}
+
+.layout {
+  background-color: $background-primary;
+  min-height: 100vh;
+
+  .main-container {
+    min-height: 100vh;
+    width: 1200px;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: $text-color-primary;
+    padding: 0 12px;
+    margin: 0 auto;
+  }
+}
+
+.react-monaco-editor-container {
+  border-left: $border-primary;
+  border-right: $border-primary;
+  box-sizing: border-box;
+}
+
+.submit-btn {
+  background-color: $primary-color;
+  margin: 16px auto 0 auto;
+  width: 200px;
+  display: block;
+}
