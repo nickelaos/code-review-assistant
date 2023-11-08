@@ -5,7 +5,7 @@ import { navigation } from "./navigation/routes";
 import "./styles/main.scss";
 
 function App() {
-  return (
+    return (
     <ConfigProvider
       theme={{
         algorithm: theme.darkAlgorithm

@@ -1,7 +1,9 @@
 import { OpenAI } from "openai";
-import { config } from "./config";
 
-const openai = new OpenAI(config);
+const openai = new OpenAI({
+  apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true
+});
 
 export const openaiApi = {
   prompt: async (question: string, userPrompt: string) => {
