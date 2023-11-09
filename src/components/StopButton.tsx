@@ -1,14 +1,16 @@
 import React from "react";
 import { Button } from "antd";
-import { history } from "../navigation";
+import { useNavigate } from "react-router-dom";
 import { resetResponse } from "../model/response.model";
-import {resetLoading, setLoading} from "../model/loading.model";
+import { resetLoading } from "../model/loading.model";
 
 export const StopButton = () => {
+  const navigate = useNavigate();
+
   const stop = () => {
     resetResponse();
     resetLoading();
-    history.push("/");
+    navigate("/");
   };
 
   return (
