@@ -1,8 +1,11 @@
 import MonacoEditor from "react-monaco-editor/lib/editor";
-import React, { useCallback, useState } from "react";
-import { Select } from "antd";
+import React, { useCallback } from "react";
+import { useStore } from "effector-react";
 import { Engine } from "./Engine";
+import { AdditionalInfo } from "./AdditionalInfo";
+import { Language } from "./Language";
 
+import { $language, setRequestPayload } from "../model/request.model";
 import * as monaco from "monaco-editor/esm/vs/editor/editor.api";
 import "monaco-editor/esm/vs/basic-languages/css/css.contribution";
 import "monaco-editor/esm/vs/basic-languages/html/html.contribution";
@@ -29,72 +32,31 @@ monaco.languages.register({ id: "php" });
 monaco.languages.register({ id: "javascript" });
 monaco.languages.register({ id: "typescript" });
 
-const languageOptions = [
-  {
-    value: "javascript",
-    label: "JavaScript"
-  },
-  {
-    value: "typescript",
-    label: "TypeScript"
-  },
-  {
-    value: "python",
-    label: "Python"
-  },
-
-  {
-    value: "css",
-    label: "CSS"
-  },
-  {
-    value: "html",
-    label: "HTML"
-  },
-  {
-    value: "java",
-    label: "Java"
-  },
-  {
-    value: "php",
-    label: "PHP"
-  },
-  {
-    value: "sql",
-    label: "SQL"
-  }
-];
+const EDITOR_HEIGHT = 440;
 
 function Editor() {
-  const [language, setLanguage] = useState("typescript");
-
-  const onLanguageChange = useCallback((value: string) => {
-    setLanguage(value);
-  }, []);
+  const language = useStore($language);
 
   const onChange = useCallback((value: string) => {
-    console.log(value);
+    setRequestPayload({ name: "input", value });
   }, []);
 
   const onEditorDidMount = useCallback(() => {}, []);
 
   return (
     <>
-      <Select
-        placeholder="Select language"
-        onChange={onLanguageChange}
-        options={languageOptions}
-      />
+      <Language />
       <Engine />
       <MonacoEditor
-        height={"440px"}
-        language={language}
+        height={EDITOR_HEIGHT}
+        language={language || "javascript"}
         theme="vs-dark"
-        value={""}
+        value=""
         onChange={onChange}
         options={options}
         editorDidMount={onEditorDidMount}
       />
+      <AdditionalInfo />
     </>
   );
 }

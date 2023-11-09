@@ -6,17 +6,19 @@ const openai = new OpenAI({
 });
 
 export const openaiApi = {
-  prompt: async (question: string, userPrompt: string) => {
+  prompt: async (input: string, language: string, additionalInfo: string) => {
     try {
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [
           { role: "system", content: "You are a helpful assistant." },
-          { role: "user", content: `${question}${userPrompt}` }
+          {
+            role: "user",
+            content: `Analyze the code snippet carefully (language - ${language}). Do not describe it, just give me some tips on how the following code can be improved. After the tips, give me the corrected code snippet. ${additionalInfo} This is the code for analysis: "${input}"`
+          }
         ],
         temperature: 0.2
       });
-
       return response.choices[0].message.content;
     } catch (error) {
       // Implement error handling

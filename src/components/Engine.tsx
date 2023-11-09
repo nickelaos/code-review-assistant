@@ -1,5 +1,6 @@
 import { Select } from "antd";
 import { useCallback } from "react";
+import { setRequestPayload } from "../model/request.model";
 
 const options = [
   {
@@ -9,7 +10,9 @@ const options = [
 ];
 
 export const Engine = () => {
-  const onChange = useCallback((value: string) => {}, []);
+  const onChange = useCallback((value: string) => {
+    setRequestPayload({ name: "engine", value });
+  }, []);
   return (
     <Select options={options} onChange={onChange} placeholder="Select engine" />
   );

@@ -1,4 +1,6 @@
 @import "variables";
+@import "scrollbar";
+@import "buttons";
 
 * {
   border-radius: 0 !important;
@@ -84,9 +86,7 @@ textarea {
   box-sizing: border-box;
 }
 
-.submit-btn {
-  background-color: $primary-color;
-  margin: 16px auto 0 auto;
-  width: 200px;
-  display: block;
+.spinner {
+  text-align: center;
+  margin-top: 40px;
 }
