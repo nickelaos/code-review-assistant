@@ -14,7 +14,9 @@ export const openaiApi = {
           { role: "system", content: "You are a helpful assistant." },
           {
             role: "user",
-            content: `Analyze the code snippet carefully (language - ${language}). Do not describe it, just give me some tips on how the following code can be improved. After the tips, give me the corrected code snippet. ${additionalInfo} This is the code for analysis: "${input}"`
+            content: `Analyze the code snippet carefully (language - ${language}). Do not describe it, just give me some tips on how the following code can be improved. After the tips, give me the corrected code snippet. ${
+              additionalInfo ? additionalInfo + "." : ""
+            } This is the code for analysis: "${input}". Important: give me the text with HTML tags (I need to paste it on the page with the proper formatting). I mean not only the snippet. Everything in your response must be wrapped in proper HTML tags. For example, wrap lists in ul or ol tags, wrap paragraphs in p tag, wrap the corrected snippet in pre & code tag etc.`
           }
         ],
         temperature: 0.2

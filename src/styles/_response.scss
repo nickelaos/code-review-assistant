@@ -1,0 +1,31 @@
+@import "variables";
+
+.response-content {
+  padding: 12px 32px;
+  margin: 0 auto;
+  max-width: 800px;
+  min-height: 420px;
+  width: 100%;
+  border: $border-primary;
+
+  p, ul, ol {
+    margin: 0;
+    white-space: initial;
+  }
+
+  p, li {
+    line-height: 1.5rem;
+  }
+
+  pre > pre {
+    margin-top: 0;
+    background-color: $background-editor;
+    padding: 0 16px 16px;
+    border: $border-primary;
+  }
+
+  code {
+    font-family: monospace;
+    white-space: pre;
+  }
+}

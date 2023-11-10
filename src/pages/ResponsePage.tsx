@@ -1,11 +1,11 @@
 import React from "react";
 import Layout from "../components/Layout";
 import { useStore } from "effector-react";
-import { Spin } from "antd";
+import { Skeleton, Spin } from "antd";
 import { $response } from "../model/response.model";
 import { $loading } from "../model/loading.model";
-import { BackButton } from "../components/BackButton";
-import { StopButton } from "../components/StopButton";
+import { BackButton } from "../components/Buttons/BackButton";
+import { StopButton } from "../components/Buttons/StopButton";
 
 const ResponsePage = () => {
   const response = useStore($response);
@@ -14,20 +14,26 @@ const ResponsePage = () => {
   if (loading) {
     return (
       <Layout>
-        <div className="spinner">
-          <Spin size="large" />
+        <div className="response-content">
+          <div className="spinner">
+            <Skeleton active={true} />
+            {/*<Spin size="large" />*/}
+          </div>
+          <StopButton />
         </div>
-        <StopButton />
       </Layout>
     );
   }
 
   return (
     <Layout>
-      <div className="response-content">
-        {response}
-        <BackButton />
-      </div>
+      <div
+        className="response-content"
+        dangerouslySetInnerHTML={{
+          __html: "<pre>" + response + "</pre>"
+        }}
+      />
+      <BackButton />
     </Layout>
   );
 };

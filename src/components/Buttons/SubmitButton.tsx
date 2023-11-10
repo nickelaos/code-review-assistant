@@ -1,19 +1,24 @@
 import React, { startTransition } from "react";
 import { Button } from "antd";
 import { useStore } from "effector-react";
-import { $requestPayload, fxSubmitRequest } from "../model/request.model";
-import { setLoading } from "../model/loading.model";
-import { setResponse } from "../model/response.model";
+import {
+  $engine,
+  $language,
+  $requestPayload,
+  fxSubmitRequest
+} from "../../model/request.model";
+import { setLoading } from "../../model/loading.model";
+import { setResponse } from "../../model/response.model";
 import { useNavigate } from "react-router-dom";
 
 export const SubmitButton = () => {
   const navigate = useNavigate();
 
   const requestPayload = useStore($requestPayload);
+  const language = useStore($language);
+  const engine = useStore($engine);
 
   const submit = async () => {
-    // TODO: validation...
-
     setLoading(true);
 
     startTransition(() => {
@@ -30,7 +35,13 @@ export const SubmitButton = () => {
   };
 
   return (
-    <Button type="primary" className="submit-btn" size="large" onClick={submit}>
+    <Button
+      type="primary"
+      className="submit-btn"
+      size="large"
+      onClick={submit}
+      disabled={!language || !engine}
+    >
       GET REVIEW
     </Button>
   );

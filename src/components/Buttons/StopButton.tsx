@@ -1,8 +1,8 @@
-import React from "react";
+import React, { startTransition } from "react";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
-import { resetResponse } from "../model/response.model";
-import { resetLoading } from "../model/loading.model";
+import { resetResponse } from "../../model/response.model";
+import { resetLoading } from "../../model/loading.model";
 
 export const StopButton = () => {
   const navigate = useNavigate();
@@ -10,7 +10,9 @@ export const StopButton = () => {
   const stop = () => {
     resetResponse();
     resetLoading();
-    navigate("/");
+    startTransition(() => {
+      navigate("/");
+    });
   };
 
   return (

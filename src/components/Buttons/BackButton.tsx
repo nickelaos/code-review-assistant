@@ -1,8 +1,8 @@
-import React from "react";
+import React, { startTransition } from "react";
 import { Button } from "antd";
-import { resetRequestPayload } from "../model/request.model";
-import { resetResponse } from "../model/response.model";
-import { resetLoading } from "../model/loading.model";
+import { resetRequestPayload } from "../../model/request.model";
+import { resetResponse } from "../../model/response.model";
+import { resetLoading } from "../../model/loading.model";
 import { useNavigate } from "react-router-dom";
 
 export const BackButton = () => {
@@ -12,7 +12,9 @@ export const BackButton = () => {
     resetRequestPayload();
     resetResponse();
     resetLoading();
-    navigate("/");
+    startTransition(() => {
+      navigate("/");
+    });
   };
 
   return (
