@@ -27,7 +27,7 @@ $requestPayload.on(setRequestPayload, (prevState, field) => {
 });
 
 fxSubmitRequest.use(async (payload: RequestPayload) => {
-  const { language, engine, input, additionalInfo } = payload;
+  const { language, input, additionalInfo } = payload;
   let res: string | null = "";
   try {
     res = await openaiApi.prompt(

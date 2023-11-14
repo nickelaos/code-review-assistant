@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout";
 import { useStore } from "effector-react";
-import { Skeleton, Spin } from "antd";
+import { Skeleton } from "antd";
 import { $response } from "../model/response.model";
 import { $loading } from "../model/loading.model";
 import { BackButton } from "../components/Buttons/BackButton";
@@ -17,7 +17,6 @@ const ResponsePage = () => {
         <div className="response-content">
           <div className="spinner">
             <Skeleton active={true} />
-            {/*<Spin size="large" />*/}
           </div>
           <StopButton />
         </div>
