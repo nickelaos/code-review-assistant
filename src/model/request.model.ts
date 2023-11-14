@@ -28,21 +28,17 @@ $requestPayload.on(setRequestPayload, (prevState, field) => {
 
 fxSubmitRequest.use(async (payload: RequestPayload) => {
   const { language, engine, input, additionalInfo } = payload;
-
-  // OpenAI API
-  if (engine === "openai") {
-    let res: string | null = "";
-    try {
-      res = await openaiApi.prompt(
-        input || "",
-        language || "",
-        additionalInfo || ""
-      );
-      return res;
-    } catch (e) {
-      console.error(e);
-      return res;
-    }
+  let res: string | null = "";
+  try {
+    res = await openaiApi.prompt(
+      input || "",
+      language || "",
+      additionalInfo || ""
+    );
+    return res;
+  } catch (e) {
+    console.error(e);
+    return res;
   }
 });
 

@@ -6,6 +6,10 @@ const options = [
   {
     label: "OpenAI",
     value: "openai"
+  },
+  {
+    label: "Google Bard",
+    value: "google"
   }
 ];
 
