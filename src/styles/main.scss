@@ -2,6 +2,7 @@
 @import "scrollbar";
 @import "buttons";
 @import "response";
+@import "history";
 
 * {
   border-radius: 0 !important;
@@ -90,4 +91,8 @@ textarea {
 .spinner {
   text-align: center;
   margin-top: 40px;
+}
+
+.editor-buttons {
+  float: right;
 }

@@ -5,8 +5,9 @@ import { Engine } from "./Engine";
 import { AdditionalInfo } from "./AdditionalInfo";
 import { Language } from "./Language";
 
-import { $language, setRequestPayload } from "../model/request.model";
+import { $input, $language, setRequestPayload } from "../model/request.model";
 import * as monaco from "monaco-editor/esm/vs/editor/editor.api";
+
 import "monaco-editor/esm/vs/basic-languages/css/css.contribution";
 import "monaco-editor/esm/vs/basic-languages/html/html.contribution";
 import "monaco-editor/esm/vs/basic-languages/java/java.contribution";
@@ -15,6 +16,7 @@ import "monaco-editor/esm/vs/basic-languages/sql/sql.contribution";
 import "monaco-editor/esm/vs/basic-languages/python/python.contribution";
 import "monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution";
 import "monaco-editor/esm/vs/basic-languages/typescript/typescript.contribution";
+import EditorButtons from "./EditorButtons";
 
 const options = {
   minimap: {
@@ -36,6 +38,7 @@ const EDITOR_HEIGHT = 440;
 
 function Editor() {
   const language = useStore($language);
+  const input = useStore($input);
 
   const onChange = useCallback((value: string) => {
     setRequestPayload({ name: "input", value });
@@ -47,11 +50,12 @@ function Editor() {
     <>
       <Language />
       <Engine />
+      <EditorButtons />
       <MonacoEditor
         height={EDITOR_HEIGHT}
         language={language || "javascript"}
         theme="vs-dark"
-        value=""
+        value={input}
         onChange={onChange}
         options={options}
         editorDidMount={onEditorDidMount}

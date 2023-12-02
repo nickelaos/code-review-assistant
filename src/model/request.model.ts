@@ -1,11 +1,12 @@
 import { createEffect, createEvent, createStore } from "effector";
 import { RequestPayload, Field } from "../types/main.types";
 import { openaiApi } from "../api/openai";
+import { createLocalState } from "../db";
 
 export const setRequestPayload = createEvent<Field>();
 export const resetRequestPayload = createEvent();
 
-export const fxSubmitRequest = createEffect<RequestPayload, any>(); ///
+export const fxSubmitRequest = createEffect<RequestPayload, any>();
 
 export const $requestPayload = createStore<RequestPayload>({
   language: null,
@@ -40,6 +41,10 @@ fxSubmitRequest.use(async (payload: RequestPayload) => {
     console.error(e);
     return res;
   }
+});
+
+fxSubmitRequest.doneData.watch((res: any): void => {
+  void createLocalState(res);
 });
 
 $requestPayload.reset(resetRequestPayload);

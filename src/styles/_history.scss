@@ -1,0 +1,40 @@
+@import "variables";
+
+.history-content {
+  &-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-left {
+      width: 50%;
+      padding-right: 24px;
+      border-right: $border-primary;
+    }
+
+    &-right {
+      width: 50%;
+      padding-left: 24px;
+    }
+
+    p, ul, ol {
+      white-space: initial;
+    }
+
+    p, li {
+      line-height: 1.5rem;
+    }
+
+    pre {
+      margin-top: 0;
+      background-color: $background-editor;
+      padding: 16px;
+      border: $border-primary;
+    }
+
+    code {
+      font-family: monospace;
+      white-space: pre;
+    }
+  }
+}

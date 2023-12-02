@@ -15,6 +15,13 @@ export const ROUTE_RESPONSE: Route = {
   exact: true
 };
 
+export const ROUTE_HISTORY: Route = {
+  id: "ROUTE_HISTORY",
+  path: "/history",
+  component: lazy(() => import("./pages/HistoryPage")),
+  exact: true
+};
+
 export const navigation = {
-  routes: [ROUTE_REQUEST, ROUTE_RESPONSE]
+  routes: [ROUTE_REQUEST, ROUTE_RESPONSE, ROUTE_HISTORY]
 };
