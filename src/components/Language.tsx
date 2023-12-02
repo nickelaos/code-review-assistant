@@ -1,6 +1,8 @@
 import React, { useCallback } from "react";
 import { Select } from "antd";
-import { setRequestPayload } from "../model/request.model";
+import { $language, setRequestPayload } from "../model/request.model";
+import { useTranslation } from "react-i18next";
+import { useStore } from "effector-react";
 
 const options = [
   {
@@ -15,7 +17,6 @@ const options = [
     value: "python",
     label: "Python"
   },
-
   {
     value: "css",
     label: "CSS"
@@ -39,15 +40,19 @@ const options = [
 ];
 
 export const Language = () => {
+  const { t } = useTranslation();
+  const value = useStore($language);
+
   const onChange = useCallback((value: string) => {
     setRequestPayload({ name: "language", value });
   }, []);
 
   return (
     <Select
-      placeholder="Select language"
+      placeholder={t("SELECT_LANGUAGE")}
       onChange={onChange}
       options={options}
+      value={value}
     />
   );
 };

@@ -1,10 +1,12 @@
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+  const { t } = useTranslation();
   return (
     <header>
       <h1>Code Review Assistant</h1>
-      <p>paste your code snippet and get an expert review</p>
+      <p>{t("HEADER_SUBTITLE")}</p>
     </header>
   );
 };

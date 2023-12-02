@@ -68,6 +68,14 @@ textarea {
 .layout {
   background-color: $background-primary;
   min-height: 100vh;
+  position: relative;
+
+  .lang-selector {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+  }
 
   .main-container {
     min-height: 100vh;

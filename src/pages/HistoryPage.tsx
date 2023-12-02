@@ -3,8 +3,11 @@ import Layout from "../components/Layout";
 import { BackButton } from "../components/Buttons/BackButton";
 import { Collapse } from "antd";
 import { getLocalState, initDB } from "../db";
+import { useTranslation } from "react-i18next";
 
 const HistoryPage = () => {
+  const { t } = useTranslation();
+
   const [state, setState] = useState<any[]>([]);
 
   const items = useMemo(() => {
@@ -17,12 +20,16 @@ const HistoryPage = () => {
           children: (
             <div className="history-content-item">
               <div className="history-content-item-left">
-                <p>Engine: {item.requestData.engine.toUpperCase()}</p>
-
+                <p>
+                  {t("ENGINE")}: {item.requestData.engine.toUpperCase()}
+                </p>
                 <pre
                   dangerouslySetInnerHTML={{ __html: item.requestData.input }}
                 ></pre>
-                <p>Additional Info: {item.requestData.additionalInfo || "-"}</p>
+                <p>
+                  {t("ADDITIONAL_INFO")}:{" "}
+                  {item.requestData.additionalInfo || "-"}
+                </p>
               </div>
               <div
                 dangerouslySetInnerHTML={{ __html: item.responseData }}
@@ -45,7 +52,7 @@ const HistoryPage = () => {
   return (
     <Layout>
       <div className="history-content">
-        <h2>History</h2>
+        <h2>{t("HISTORY")}</h2>
         <Collapse accordion items={items} />
         <BackButton />
       </div>

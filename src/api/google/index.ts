@@ -1,4 +1,5 @@
 import { OpenAI } from "openai";
+import i18next from "i18next";
 
 const openai = new OpenAI({
   apiKey: process.env.REACT_APP_OPENAI_API_KEY,
@@ -7,6 +8,7 @@ const openai = new OpenAI({
 
 export const openaiApi = {
   prompt: async (input: string, language: string, additionalInfo: string) => {
+    const currentLang = i18next.language;
     try {
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
@@ -16,7 +18,7 @@ export const openaiApi = {
             role: "user",
             content: `Analyze the code snippet carefully (language - ${language}). Do not describe it, just give me some tips on how the following code can be improved. After the tips, give me the corrected code snippet. ${
               additionalInfo ? additionalInfo + "." : ""
-            } This is the code for analysis: "${input}". Important: give me the text with HTML tags (I need to paste it on the page with the proper formatting). I mean not only the snippet. Everything in your response must be wrapped in proper HTML tags. For example, wrap lists in ul or ol tags, wrap paragraphs in p tag, wrap the corrected snippet in pre & code tag etc.`
+            } This is the code for analysis: "${input}". Important: give me the text with HTML tags (I need to paste it on the page with the proper formatting). I mean not only the snippet. Everything in your response must be wrapped in proper HTML tags. For example, wrap lists in ul or ol tags, wrap paragraphs in p tag, wrap the corrected snippet in pre & code tag etc. Please, give me the response in the following language: ${currentLang}.`
           }
         ],
         temperature: 0.2

@@ -10,8 +10,10 @@ import {
 import { setLoading } from "../../model/loading.model";
 import { setResponse } from "../../model/response.model";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export const SubmitButton = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const requestPayload = useStore($requestPayload);
@@ -42,7 +44,7 @@ export const SubmitButton = () => {
       onClick={submit}
       disabled={!language || !engine}
     >
-      GET REVIEW
+      {t("SUBMIT")}
     </Button>
   );
 };

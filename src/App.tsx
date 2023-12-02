@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ConfigProvider, theme } from "antd";
 import { navigation } from "./routes";
 import { initDB } from "./db";
+import "./i18n";
 import "./styles/main.scss";
 
 function App() {
