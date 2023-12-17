@@ -12,7 +12,8 @@ export const $requestPayload = createStore<RequestPayload>({
   language: null,
   engine: null,
   input: null,
-  additionalInfo: null
+  additionalInfo: null,
+  temperature: 0.2
 });
 
 export const $language = $requestPayload.map(p => p.language);
@@ -28,13 +29,14 @@ $requestPayload.on(setRequestPayload, (prevState, field) => {
 });
 
 fxSubmitRequest.use(async (payload: RequestPayload) => {
-  const { language, input, additionalInfo } = payload;
+  const { language, input, additionalInfo, temperature } = payload;
   let res: string | null = "";
   try {
     res = await openaiApi.prompt(
       input || "",
       language || "",
-      additionalInfo || ""
+      additionalInfo || "",
+      temperature
     );
     return res;
   } catch (e) {

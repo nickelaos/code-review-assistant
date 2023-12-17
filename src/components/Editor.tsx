@@ -17,6 +17,7 @@ import "monaco-editor/esm/vs/basic-languages/python/python.contribution";
 import "monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution";
 import "monaco-editor/esm/vs/basic-languages/typescript/typescript.contribution";
 import EditorButtons from "./EditorButtons";
+import { Temperature } from "./Temperature";
 
 const options = {
   minimap: {
@@ -61,6 +62,7 @@ function Editor() {
         editorDidMount={onEditorDidMount}
       />
       <AdditionalInfo />
+      <Temperature />
     </>
   );
 }

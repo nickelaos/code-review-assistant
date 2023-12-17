@@ -3,6 +3,7 @@
 @import "buttons";
 @import "response";
 @import "history";
+@import "slider";
 
 * {
   border-radius: 0 !important;
@@ -85,7 +86,7 @@ textarea {
     flex-direction: column;
     justify-content: flex-start;
     color: $text-color-primary;
-    padding: 0 12px;
+    padding: 0 12px 36px 12px;
     margin: 0 auto;
   }
 }

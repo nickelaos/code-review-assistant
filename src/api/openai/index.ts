@@ -7,7 +7,12 @@ const openai = new OpenAI({
 });
 
 export const openaiApi = {
-  prompt: async (input: string, language: string, additionalInfo: string) => {
+  prompt: async (
+    input: string,
+    language: string,
+    additionalInfo: string,
+    temperature: number
+  ) => {
     const currentLang = i18next.language;
     try {
       const response = await openai.chat.completions.create({
@@ -21,7 +26,7 @@ export const openaiApi = {
             } This is the code for analysis: "${input}". Important: give me the text with HTML tags (I need to paste it on the page with the proper formatting). I mean not only the snippet. Everything in your response must be wrapped in proper HTML tags. For example, wrap lists in ul or ol tags, wrap paragraphs in p tag, wrap the corrected snippet in pre & code tag etc. Please, give me the response in the following language: ${currentLang}.`
           }
         ],
-        temperature: 0.2
+        temperature
       });
       return response.choices[0].message.content;
     } catch (error) {

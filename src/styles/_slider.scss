@@ -1,0 +1,21 @@
+.slider {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+
+  .ant-slider {
+    width: 80%;
+
+    .ant-slider-rail {
+      background-color: #15325b !important;
+    }
+
+    &:hover {
+      .ant-slider-rail {
+        background-color: #15417e !important;
+      }
+    }
+  }
+}

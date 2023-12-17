@@ -3,9 +3,10 @@ export interface RequestPayload {
   engine: string | null;
   input: string | null;
   additionalInfo: string | null;
+  temperature: number;
 }
 
 export type Field = {
   name: string;
-  value: string | null;
+  value: any;
 };
